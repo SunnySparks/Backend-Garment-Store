@@ -8,7 +8,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: [""],
+    origin: [
+      "https://frontend-garment-store-10we047e9-sunnysparks-projects.vercel.app",
+    ],
     methods: ["POST", "GET"],
     credentials: true,
   })
