@@ -8,14 +8,16 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "https://frontend-garment-store-10we047e9-sunnysparks-projects.vercel.app",
-    ],
-    methods: ["POST", "GET"],
+    origin: ["*"],
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.get("/api/rest", () => {
+  res.json({ message: "CORS working!!!" });
+});
 app.use(express.json());
 
 connectDB();
