@@ -1,29 +1,32 @@
-const express = require("express");
 const cors = require("cors");
+const express = require("express");
 const connectDB = require("./config/database");
 const { port } = require("./config/environment");
 const clientRoutes = require("./routes/clientRoutes");
 
 const app = express();
 
+// Configuración correcta de CORS antes de cualquier middleware
 app.use(
   cors({
     origin: "https://frontend-garment-store-eight.vercel.app",
     credentials: true,
-    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
   })
 );
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
-app.get("/api/rest", () => {
+app.options("*", cors()); // Maneja preflight requests
+
+app.get("/api/rest", (req, res) => {
   res.json({ message: "CORS working!!!" });
 });
-app.use(express.json());
 
 connectDB();
 
-app.get("/", () => {
+app.get("/", (req, res) => {
   res.send("Bienvenido a la API tienda de ropa");
 });
 
