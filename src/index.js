@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://frontend-garment-store-eight.vercel.app/",
+    origin: "https://frontend-garment-store-eight.vercel.app",
     credentials: true,
     methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
