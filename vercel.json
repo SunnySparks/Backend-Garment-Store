@@ -1,9 +1,15 @@
 {
   "version": 2,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/index.js"
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "index.js"
     }
   ],
   "headers": [
@@ -12,7 +18,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://frontend-garment-store-eight.vercel.app"
+          "value": "https://new-front-ecru.vercel.app"
         },
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         {
